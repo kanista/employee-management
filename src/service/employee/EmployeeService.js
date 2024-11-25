@@ -14,13 +14,13 @@ const getEmployees = async () => {
 const createEmployee = async (employeeData) => {
     try {
         const payload = {
-            FirstName: employeeData.firstName,
-            LastName: employeeData.lastName,
-            EmailAddress: employeeData.email,
-            DateOfBirth: employeeData.dob,
-            Age: employeeData.age,
-            Salary: employeeData.salary,
-            DepartmentId: employeeData.department,
+            firstName: employeeData.firstName,
+            lastName: employeeData.lastName,
+            emailAddress: employeeData.emailAddress,
+            dateOfBirth: employeeData.dateOfBirth,
+            age: employeeData.age,
+            salary: employeeData.salary,
+            departmentId: employeeData.departmentId,
         };
 
         const response = await axios.post(API_ENDPOINTS.CREATE_EMPLOYEE, payload);
@@ -34,15 +34,15 @@ const createEmployee = async (employeeData) => {
 const editEmployee = async (employeeId, employeeData) => {
     try {
         const payload = {
-            FirstName: employeeData.firstName,
-            LastName: employeeData.lastName,
-            EmailAddress: employeeData.email,
-            DateOfBirth: employeeData.dob || null,
-            Age: employeeData.age,
-            Salary: employeeData.salary || null,
-            DepartmentId: employeeData.department || null,
+            firstName: employeeData.firstName,
+            lastName: employeeData.lastName,
+            emailAddress: employeeData.emailAddress,
+            dateOfBirth: employeeData.dateOfBirth || null,
+            age: employeeData.age,
+            salary: employeeData.salary || null,
+            departmentId: employeeData.departmentId || null,
         };
-        const response = await axios.put(`${API_ENDPOINTS.EDIT_EMPLOYEE}/${employeeId}`, payload);
+        const response = await axios.put(API_ENDPOINTS.EDIT_EMPLOYEE(employeeId), payload);
         return response.data;
     } catch (error) {
         console.error('Error editing employee:', error);
@@ -52,7 +52,7 @@ const editEmployee = async (employeeId, employeeData) => {
 
 const deleteEmployee = async (employeeId) => {
     try {
-        const response = await axios.delete(`${API_ENDPOINTS.DELETE_EMPLOYEE}/${employeeId}`);
+        const response = await axios.delete(API_ENDPOINTS.DELETE_EMPLOYEE(employeeId));
         return response.data;
     } catch (error) {
         console.error('Error deleting employee:', error);

@@ -31,7 +31,7 @@ const editDepartment = async (departmentId, departmentData) => {
             DepartmentCode: departmentData.code,
             DepartmentName: departmentData.name,
         };
-        const response = await axios.put(`${API_ENDPOINTS.EDIT_DEPARTMENT}/${departmentId}`, payload);
+        const response = await axios.put(API_ENDPOINTS.EDIT_DEPARTMENT(departmentId), payload);
         return response.data;
     } catch (error) {
         console.error('Error editing department:', error);
@@ -41,7 +41,7 @@ const editDepartment = async (departmentId, departmentData) => {
 
 const deleteDepartment = async (departmentId) => {
     try {
-        const response = await axios.delete(`${API_ENDPOINTS.DELETE_DEPARTMENT}/${departmentId}`);
+        const response = await axios.delete(API_ENDPOINTS.DELETE_DEPARTMENT(departmentId));
         return response.data;
     } catch (error) {
         console.error('Error deleting department:', error);
