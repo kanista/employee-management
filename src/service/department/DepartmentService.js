@@ -7,7 +7,7 @@ const getDepartments = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching departments:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -21,7 +21,7 @@ const createDepartment = async (departmentData) => {
         return response.data;
     } catch (error) {
         console.error('Error creating department:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -35,7 +35,7 @@ const editDepartment = async (departmentId, departmentData) => {
         return response.data;
     } catch (error) {
         console.error('Error editing department:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -45,7 +45,7 @@ const deleteDepartment = async (departmentId) => {
         return response.data;
     } catch (error) {
         console.error('Error deleting department:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 

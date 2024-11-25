@@ -7,7 +7,7 @@ const getEmployees = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching employees:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -27,7 +27,7 @@ const createEmployee = async (employeeData) => {
         return response.data;
     } catch (error) {
         console.error('Error creating employee:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -46,7 +46,7 @@ const editEmployee = async (employeeId, employeeData) => {
         return response.data;
     } catch (error) {
         console.error('Error editing employee:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 
@@ -56,7 +56,7 @@ const deleteEmployee = async (employeeId) => {
         return response.data;
     } catch (error) {
         console.error('Error deleting employee:', error);
-        throw error;
+        return error.response?.data;
     }
 };
 

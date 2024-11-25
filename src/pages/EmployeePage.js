@@ -61,7 +61,7 @@ const EmployeePage = () => {
 
     const showDrawer = () => {
         if (!editingEmployee) {
-            form.resetFields(); // Reset form fields for creating a new employee
+            form.resetFields();
         }
         setVisible(true);
     };
