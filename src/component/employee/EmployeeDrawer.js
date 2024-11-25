@@ -74,7 +74,7 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
 
             <Form.Item
                 label="Email Address"
-                name="email"
+                name="emailAddress"
                 rules={[
                     { required: true, message: "Email is required" },
                     { type: "email", message: "Please enter a valid email" },
@@ -85,7 +85,7 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
 
             <Form.Item
                 label="Date of Birth"
-                name="dob"
+                name="dateOfBirth"
                 rules={[{ required: true, message: "Date of Birth is required" }]}
             >
                 <DatePicker
@@ -107,7 +107,7 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
 
             <Form.Item
                 label="Department"
-                name="department"
+                name="departmentId"
                 rules={[{ required: true, message: "Department is required" }]}
             >
                 <Select placeholder="Select employee department">
