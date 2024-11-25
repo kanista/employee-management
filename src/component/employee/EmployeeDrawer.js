@@ -22,23 +22,48 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
         }
     };
 
+    // const onFinish = (values) => {
+    //     const formattedValues = {
+    //         ...values,
+    //         dateOfBirth: values.dateOfBirth ? values.dateOfBirth.toDate() : null,
+    //     };
+    //     const age = calculateAge(formattedValues.dateOfBirth);
+    //     onSave({ ...formattedValues, age });
+    //
+    // };
+    //
     const onFinish = (values) => {
+        const dateOfBirth = values.dateOfBirth?.toDate();
+        const age = calculateAge(dateOfBirth);
+
+        if (age < 18 || age > 100) {
+            return form.setFields([
+                {
+                    name: "dateOfBirth",
+                    errors: ["Employee must be between 18 and 100 years old."],
+                },
+            ]);
+        }
+
         const formattedValues = {
             ...values,
-            dateOfBirth: values.dateOfBirth ? values.dateOfBirth.toDate() : null,
+            dateOfBirth,
+            departmentId: values.departmentId,
+            age,
         };
-        const age = calculateAge(formattedValues.dateOfBirth);
-        onSave({ ...formattedValues, age });
 
+        onSave(formattedValues);
+        form.resetFields();
     };
 
     useEffect(() => {
         if (initialValues) {
-            const formattedInitialValues = {
+            form.setFieldsValue({
                 ...initialValues,
                 dateOfBirth: initialValues.dateOfBirth ? moment(initialValues.dateOfBirth) : null,
-            };
-            form.setFieldsValue(formattedInitialValues);
+            });
+        } else {
+            form.resetFields();
         }
     }, [initialValues, form]);
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Drawer, Table, Popconfirm, message } from "antd";
+import {Drawer, Table, Popconfirm, message, Form} from "antd";
 import EmployeeDrawer from "../component/employee/EmployeeDrawer";
 import GradientButton from "../component/common/GradientButton";
 import { DeleteOutlined, EditOutlined, QuestionCircleOutlined } from "@ant-design/icons";
@@ -14,6 +14,7 @@ const EmployeePage = () => {
     const [employees, setEmployees] = useState([]);
     const [departments, setDepartments] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [form] = Form.useForm();
 
     useEffect(() => {
         fetchEmployees();
@@ -52,7 +53,19 @@ const EmployeePage = () => {
         }
     };
 
-    const showDrawer = () => setVisible(true);
+    // const showDrawer = () => setVisible(true);
+    // const closeDrawer = () => {
+    //     setVisible(false);
+    //     setEditingEmployee(null);
+    // };
+
+    const showDrawer = () => {
+        if (!editingEmployee) {
+            form.resetFields(); // Reset form fields for creating a new employee
+        }
+        setVisible(true);
+    };
+
     const closeDrawer = () => {
         setVisible(false);
         setEditingEmployee(null);
