@@ -25,17 +25,18 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
     const onFinish = (values) => {
         const formattedValues = {
             ...values,
-            dob: values.dob ? values.dob.toDate() : null, // Convert moment to plain date
+            dob: values.dob ? values.dob.toDate() : null,
         };
         const age = calculateAge(formattedValues.dob);
         onSave({ ...formattedValues, age });
+
     };
 
     useEffect(() => {
         if (initialValues) {
             const formattedInitialValues = {
                 ...initialValues,
-                dob: initialValues.dob ? moment(initialValues.dob) : null, // Convert dob to moment
+                dob: initialValues.dob ? moment(initialValues.dob) : null,
             };
             form.setFieldsValue(formattedInitialValues);
         }
