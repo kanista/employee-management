@@ -25,9 +25,9 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
     const onFinish = (values) => {
         const formattedValues = {
             ...values,
-            dob: values.dob ? values.dob.toDate() : null,
+            dateOfBirth: values.dateOfBirth ? values.dateOfBirth.toDate() : null,
         };
-        const age = calculateAge(formattedValues.dob);
+        const age = calculateAge(formattedValues.dateOfBirth);
         onSave({ ...formattedValues, age });
 
     };
@@ -36,7 +36,7 @@ const EmployeeDrawer = ({ initialValues, onSave, departments, isEditing }) => {
         if (initialValues) {
             const formattedInitialValues = {
                 ...initialValues,
-                dob: initialValues.dob ? moment(initialValues.dob) : null,
+                dateOfBirth: initialValues.dateOfBirth ? moment(initialValues.dateOfBirth) : null,
             };
             form.setFieldsValue(formattedInitialValues);
         }

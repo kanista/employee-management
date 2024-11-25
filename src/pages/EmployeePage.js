@@ -86,7 +86,7 @@ const EmployeePage = () => {
     const handleEdit = (record) => {
         setEditingEmployee({
             ...record,
-            dob: record.dob ? moment(record.dob) : null,
+            dateOfBirth: record.dateOfBirth ? moment(record.dateOfBirth) : null,
         });
         showDrawer();
     };
@@ -106,12 +106,12 @@ const EmployeePage = () => {
     };
 
     const columns = [
-            { title: "First Name", dataIndex: "FirstName" },
-            { title: "Last Name", dataIndex: "LastName" },
-            { title: "Email", dataIndex: "EmailAddress" },
-            { title: "Age", dataIndex: "Age" },
-            { title: "DoB", dataIndex: "DateOfBirth" },
-            { title: "Department", dataIndex: "DepartmentId" },
+            { title: "First Name", dataIndex: "firstName" },
+            { title: "Last Name", dataIndex: "lastName" },
+            { title: "Email", dataIndex: "emailAddress" },
+            { title: "Age", dataIndex: "age" },
+            { title: "DoB", dataIndex: "dateOfBirth" },
+            { title: "Department Name", dataIndex: "departmentId" },
         {
             title: "Actions",
             render: (_, record) => (
@@ -129,7 +129,7 @@ const EmployeePage = () => {
                         title="Delete the Employee"
                         description="Are you sure to delete?"
                         icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-                        onConfirm={() => handleDelete(record.EmployeeId)}
+                        onConfirm={() => handleDelete(record.employeeId)}
                         okText="Yes"
                         cancelText="No"
                         okButtonProps={{
